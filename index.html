@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parth Rait | Data Science Portfolio</title>
+    
+    <!-- TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- CHART.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- FONTS: 'Merriweather' (Harvard Serif) & 'Inter' (Clean Sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <style>
+        :root {
+            /* HARVARD ARCHITECTURAL PALETTE */
+            --crimson: #A51C30;
+            --slate: #1E1E1E;
+            --stone: #F3F4F6;
+            --paper: #FFFFFF;
+            --gold: #C4961A; 
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--stone);
+            color: var(--slate);
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Merriweather', serif;
+        }
+
+        /* CARD STYLING */
+        .project-card {
+            background: var(--paper);
+            border-top: 4px solid var(--crimson);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* METRIC BADGES */
+        .metric-badge {
+            background-color: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            padding: 0.5rem 1rem;
+            text-align: center;
+        }
+        .metric-value {
+            font-family: 'Merriweather', serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--crimson);
+        }
+        .metric-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748B;
+        }
+
+        /* CHART CONTAINER */
+        .chart-container {
+            position: relative;
+            height: 250px;
+            width: 100%;
+        }
+
+        /* IMAGE STYLING */
+        .ml-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+        .project-card:hover .ml-image {
+            filter: grayscale(0%);
+        }
+        
+        /* Code snippet styling */
+        .code-snippet {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            border-left: 4px solid var(--gold);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HEADER / PROFILE SECTION -->
+    <header class="bg-[#1E1E1E] text-white py-20 border-b-8 border-[#A51C30]">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-block px-3 py-1 border border-[#C4961A] text-[#C4961A] text-xs font-bold tracking-widest uppercase mb-4">
+                    Kaggle Expert
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight serif">Parth Rait <br/><span class="text-gray-400 italic font-light font-sans">Data Science Portfolio</span></h1>
+                <p class="text-lg text-gray-300 mb-8 max-w-lg font-light leading-relaxed">
+                    Specializing in regression analysis, ensemble modeling, and feature engineering on high-dimensional datasets. Exploring the boundaries of predictive accuracy.
+                </p>
+                <div class="flex gap-4 text-sm font-bold uppercase tracking-widest text-gray-400">
+                    <a href="https://github.com/Parth-rait" target="_blank" class="hover:text-white transition border-b border-gray-600 hover:border-white pb-1"><i class="fab fa-github mr-2"></i>GitHub</a>
+                    <a href="https://www.kaggle.com/parthrait" target="_blank" class="hover:text-white transition border-b border-gray-600 hover:border-white pb-1"><i class="fab fa-kaggle mr-2"></i>Kaggle Profile</a>
+                </div>
+            </div>
+            
+            <!-- Global Stats Grid -->
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-white/5 p-6 border border-white/10 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"><i class="fas fa-trophy fa-3x"></i></div>
+                    <div class="text-[#C4961A] text-xs font-bold uppercase mb-2">Competitions</div>
+                    <div class="text-4xl serif">3</div>
+                </div>
+                <div class="bg-white/5 p-6 border border-white/10 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"><i class="fas fa-medal fa-3x"></i></div>
+                    <div class="text-[#C4961A] text-xs font-bold uppercase mb-2">Medals</div>
+                    <div class="text-4xl serif">6</div>
+                </div>
+                <div class="bg-white/5 p-6 border border-white/10 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"><i class="fas fa-chart-line fa-3x"></i></div>
+                    <div class="text-[#C4961A] text-xs font-bold uppercase mb-2">Current Rank</div>
+                    <div class="text-4xl serif">2,169</div>
+                    <div class="text-xs text-gray-500 mt-1">of 53,971</div>
+                </div>
+                <div class="bg-white/5 p-6 border border-white/10 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"><i class="fas fa-crown fa-3x"></i></div>
+                    <div class="text-[#C4961A] text-xs font-bold uppercase mb-2">Highest Rank</div>
+                    <div class="text-4xl serif">1,886</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main id="portfolio-grid" class="max-w-7xl mx-auto px-6 py-20 space-y-32">
+        <!-- Projects will be injected here via JavaScript -->
+        
+        <!-- Placeholder for user instructions (Only visible in code, not on site) -->
+        <!-- TO ADD NEW COMPETITIONS: Go to the <script> section at the bottom and add a new object to the 'projects' array. -->
+    </main>
+
+    <footer class="bg-[#1E1E1E] text-gray-500 py-12 text-center text-xs uppercase tracking-widest border-t border-[#333]">
+        <p>© 2025 Parth Rait Analytics | <a href="https://github.com/Parth-rait/Kaggle-Competitions-" class="hover:text-white transition">View Source Repository</a></p>
+    </footer>
+
+    <!-- JAVASCRIPT DATA ENGINE -->
+    <script>
+        // ======================================================
+        // 1. YOUR KAGGLE DATA (ADD NEW COMPETITIONS HERE)
+        // ======================================================
+        const projects = [
+            {
+                id: "podcast",
+                title: "Predict Podcast Listening Time",
+                subtitle: "Playground Series S5E4",
+                date: "7 months ago",
+                rank: "100",
+                totalTeams: "3310",
+                metricName: "RMSE",
+                score: "0.45332", 
+                model: "XGBoost + LightGBM Ensemble",
+                image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1000&auto=format&fit=crop", 
+                description: "Developed a predictive model to estimate user engagement duration. Leveraged time-series feature engineering on audio timestamps and listener demographics.",
+                codeLink: "https://github.com/Parth-rait/Kaggle-Competitions-/blob/main/predict-podcast-listening-time-l1-soln.ipynb", 
+                kaggleLink: "https://www.kaggle.com/competitions/playground-series-s5e4/leaderboard",
+                chartData: [0.85, 0.72, 0.61, 0.55, 0.49, 0.46, 0.45],
+                codeSnippet: `
+# Feature Engineering for Time Series
+def create_features(df):
+    df['hour'] = df['timestamp'].dt.hour
+    df['dayofweek'] = df['timestamp'].dt.dayofweek
+    df['is_weekend'] = df['dayofweek'].apply(lambda x: 1 if x >= 5 else 0)
+    return df
+
+# Ensemble Model Training
+model_xgb = XGBRegressor(**xgb_params)
+model_lgbm = LGBMRegressor(**lgbm_params)
+ensemble_pred = 0.6 * model_xgb.predict(X_test) + 0.4 * model_lgbm.predict(X_test)
+                `
+            },
+            {
+                id: "insurance",
+                title: "Regression with Insurance Dataset",
+                subtitle: "Playground Series S4E12",
+                date: "1 year ago",
+                rank: "651",
+                totalTeams: "2390",
+                metricName: "RMSLE",
+                score: "0.38812", 
+                model: "CatBoost Regressor",
+                image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop", 
+                description: "Predicted insurance premiums based on health risk factors. Focused on handling outliers in medical cost data and encoding high-cardinality categorical variables.",
+                codeLink: "https://github.com/Parth-rait/Kaggle-Competitions-/blob/main/regression-but-i-finally-use-categorical-data.ipynb",
+                kaggleLink: "https://www.kaggle.com/competitions/playground-series-s4e12/leaderboard",
+                chartData: [0.65, 0.58, 0.52, 0.48, 0.44, 0.41, 0.39],
+                codeSnippet: `
+# Handling Categorical Variables with CatBoost
+cat_features = ['sex', 'smoker', 'region']
+
+model = CatBoostRegressor(
+    iterations=1000,
+    learning_rate=0.05,
+    depth=6,
+    loss_function='RMSE',
+    cat_features=cat_features,
+    verbose=100
+)
+
+model.fit(X_train, y_train, eval_set=(X_val, y_val))
+                `
+            },
+            {
+                id: "calories",
+                title: "Predict Calorie Expenditure",
+                subtitle: "Playground Series S5E5",
+                date: "6 months ago",
+                rank: "1426",
+                totalTeams: "4316",
+                metricName: "RMSLE",
+                score: "12.450", 
+                model: "Random Forest & Neural Net",
+                image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1000&auto=format&fit=crop", 
+                description: "Estimated calories burned during exercise sessions using biometric sensor data. Implemented a voting regressor to balance variance from individual models.",
+                codeLink: "https://github.com/Parth-rait/Kaggle-Competitions-/blob/main/predict-calorie-t1-0-05726.ipynb",
+                kaggleLink: "https://www.kaggle.com/competitions/playground-series-s5e5/leaderboard",
+                chartData: [25.0, 21.5, 18.2, 16.0, 14.5, 13.1, 12.4],
+                codeSnippet: `
+# Voting Regressor Ensemble
+rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
+nn_model = MLPRegressor(hidden_layer_sizes=(100, 50), max_iter=500)
+
+ensemble = VotingRegressor(estimators=[
+    ('rf', rf_model), 
+    ('nn', nn_model)
+])
+
+ensemble.fit(X_train, y_train)
+y_pred = ensemble.predict(X_test)
+                `
+            }
+        ];
+
+        // ======================================================
+        // 2. RENDER LOGIC (DO NOT TOUCH)
+        // ======================================================
+        const container = document.getElementById('portfolio-grid');
+
+        projects.forEach((proj, index) => {
+            const section = document.createElement('section');
+            section.className = "grid grid-cols-1 lg:grid-cols-12 gap-12 items-start group border-b border-gray-200 pb-20 last:border-0";
+            
+            section.innerHTML = `
+                <!-- Left Column: Visuals & Metrics -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="project-card overflow-hidden rounded-md relative">
+                         <!-- Rank Badge Overlay -->
+                        <div class="absolute top-4 right-4 bg-[#A51C30] text-white px-3 py-1 text-sm font-bold shadow-lg z-10">
+                            Rank: ${proj.rank} / ${proj.totalTeams}
+                        </div>
+                        <img src="${proj.image}" alt="${proj.title}" class="ml-image">
+                        <div class="p-8 bg-white">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-[10px] font-bold uppercase tracking-widest border border-gray-200 rounded">${proj.subtitle}</span>
+                                <span class="text-xs text-gray-400 font-medium">${proj.date}</span>
+                            </div>
+                            <h2 class="text-3xl font-bold text-[#1E1E1E] mb-4 leading-tight serif group-hover:text-[#A51C30] transition-colors">${proj.title}</h2>
+                            <p class="text-gray-600 text-base leading-relaxed mb-6">
+                                ${proj.description}
+                            </p>
+                            
+                            <div class="flex gap-4">
+                                <a href="${proj.codeLink}" target="_blank" class="inline-flex items-center gap-2 text-[#1E1E1E] font-bold text-sm uppercase tracking-wider hover:text-[#A51C30] transition border-b-2 border-transparent hover:border-[#A51C30] pb-1">
+                                    <i class="fab fa-github"></i> Source Code
+                                </a>
+                                <a href="${proj.kaggleLink}" target="_blank" class="inline-flex items-center gap-2 text-[#1E1E1E] font-bold text-sm uppercase tracking-wider hover:text-[#20BEFF] transition border-b-2 border-transparent hover:border-[#20BEFF] pb-1">
+                                    <i class="fab fa-kaggle"></i> Leaderboard
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="metric-badge">
+                            <div class="metric-value">${proj.rank}</div>
+                            <div class="metric-label">Global Rank</div>
+                        </div>
+                        <div class="metric-badge">
+                            <div class="metric-value text-gray-700">${Math.round((proj.rank / proj.totalTeams) * 100)}%</div>
+                            <div class="metric-label">Percentile</div>
+                        </div>
+                        <div class="metric-badge">
+                            <div class="metric-value text-gray-800" style="font-size: 1.2rem;">${proj.metricName}</div>
+                            <div class="metric-label">Metric</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Performance Analysis (Chart & Code) -->
+                <div class="lg:col-span-7 space-y-8">
+                    
+                    <!-- Chart Card -->
+                    <div class="bg-white p-8 border border-gray-200 shadow-sm rounded-md relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-[#A51C30]"></div>
+                        <div class="flex justify-between items-end mb-8 border-b border-gray-100 pb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-[#1E1E1E] serif">Model Performance</h3>
+                                <p class="text-xs text-gray-400 mt-1 uppercase tracking-widest font-bold">Architecture: <span class="text-[#A51C30]">${proj.model}</span></p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-4xl font-serif font-bold text-[#1E1E1E]">${proj.score}</div>
+                                <div class="text-xs text-gray-400 uppercase tracking-widest">Final Score</div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="chart-${index}"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Code Snippet Card -->
+                    <div class="bg-[#1E1E1E] p-6 rounded-md shadow-lg border border-gray-700 relative group/code">
+                        <div class="absolute top-3 right-4 text-xs font-mono text-gray-500 uppercase">Python</div>
+                        <h4 class="text-white text-sm font-bold uppercase tracking-widest mb-3 border-b border-gray-700 pb-2">Key Implementation</h4>
+                        <pre class="code-snippet"><code>${proj.codeSnippet.trim()}</code></pre>
+                    </div>
+
+                </div>
+            `;
+            
+            container.appendChild(section);
+
+            // Chart Configuration
+            const ctx = document.getElementById(`chart-${index}`).getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Start', 'Iter 1', 'Iter 2', 'Iter 3', 'Iter 4', 'Iter 5', 'Final'],
+                    datasets: [{
+                        label: 'Validation Loss',
+                        data: proj.chartData,
+                        borderColor: '#A51C30',
+                        borderWidth: 3,
+                        backgroundColor: 'rgba(165, 28, 48, 0.05)',
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#fff',
+                        pointBorderColor: '#A51C30',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { 
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#1E1E1E',
+                            titleFont: { family: 'Inter', size: 13 },
+                            bodyFont: { family: 'Inter', size: 13 },
+                            padding: 10,
+                            cornerRadius: 4,
+                            displayColors: false
+                        }
+                    },
+                    scales: {
+                        x: { 
+                            grid: { display: false },
+                            ticks: { color: '#9CA3AF', font: { family: 'Inter', size: 11 } }
+                        },
+                        y: { 
+                            border: { display: false }, 
+                            grid: { color: '#f3f4f6' },
+                            ticks: { color: '#9CA3AF', font: { family: 'Inter', size: 11 } } 
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
